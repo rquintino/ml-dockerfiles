@@ -1,0 +1,1 @@
+docker build -t digits-cpu .
