@@ -68,5 +68,6 @@ doRedis::startLocalWorkers(3,'r_jobs',host='localhost')
 - TODO - test best ways of making the redis channel secure, spiped, ssh tunnels others
 
 ## References/Related
+- https://github.com/bwlewis/doRedis
 - https://github.com/trcook/rdockerHPC
 - http://www.fransvandunne.com/parallel-r-in-docker-containers/
