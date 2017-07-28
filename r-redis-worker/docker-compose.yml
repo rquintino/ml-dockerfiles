@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  redis:
+    image: redis
+    ports:
+      # Port needed for R session client
+      - "6379:6379"
+    networks:
+      - rcluster
+  rworker:
+    image: rquintino/r-redis-worker
+    depends_on:
+        - redis
+    networks:
+      - rcluster
+    links:
+      - redis:redis
+#    environment:
+#      - REDIS_HOST=redis
+    
+networks:
+  rcluster:
+    # Enable multi-host communication
+    # driver: overlay
+    # Single host communication
