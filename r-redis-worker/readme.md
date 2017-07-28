@@ -1,6 +1,7 @@
 # Sample docker images for R cluster tests using doRedis backend
 
 note: pure r&d/tests, not production ready!
+
 ![](images/2017-07-28-04-23-41.png)
 
 ## stand alone docker-compose
