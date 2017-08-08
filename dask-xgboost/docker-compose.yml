@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+  jupyter:
+    image: dask-xgboost
+    command: jupyter notebook --ip='*' --no-browser --allow-root
+    ports:
+       - "8888:8888"
+    networks:
+      - distributed
+    links:
+        - dscheduler
+    container_name: jupyter
+
+  dscheduler:
+    image: dask-xgboost
+    ports:
+     - "8786:8786"
+     - "9786:9786"
+     - "8787:8787"
+    command: dask-scheduler
+    networks:
+      - distributed
+    container_name: dscheduler
+
+  dworker:
+    image: dask-xgboost
+    command: dask-worker dscheduler:8786
+    networks:
+      - distributed
+    links:
+        - dscheduler
+
+
+
+networks:
+  distributed:
+    # Enable multi-host communication
+    #driver: overlay
+    # Single host communication
